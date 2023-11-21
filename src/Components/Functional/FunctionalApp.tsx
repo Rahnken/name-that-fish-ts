@@ -44,7 +44,12 @@ export function FunctionalApp() {
           />
         </>
       )}
-      {gameOver && <FunctionalFinalScore />}
+      {gameOver && (
+        <FunctionalFinalScore
+          correctCount={correctCount}
+          incorrectCount={incorrectCount}
+        />
+      )}
     </>
   );
 }
