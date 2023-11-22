@@ -34,9 +34,11 @@ export function FunctionalGameBoard({
 }) {
   const [guessInput, setGuessInput] = useState("");
   const [currentFishIndex, setCurrentFishIndex] = useState(0);
+  // This has to be inside because it uses the state variable
   const nextFishToName = initialFishes[currentFishIndex];
+
   const handleGuess = (guess: string) => {
-    guess === nextFishToName.name
+    guess.trim() === nextFishToName.name
       ? handleCorrectGuess()
       : handleIncorrectGuess();
     removeFishFromAnswersLeft(nextFishToName.name);
@@ -46,9 +48,8 @@ export function FunctionalGameBoard({
       return;
     }
     setCurrentFishIndex(currentFishIndex + 1);
-
-    handleGameOver(initialFishes.length - (currentFishIndex + 1));
   };
+
   return (
     <div id="game-board">
       <div id="fish-container">
